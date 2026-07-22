@@ -9,6 +9,13 @@ events (changed times/venues) instead of creating duplicates.
 - Python 3.9+ (uses the standard library only; `zoneinfo` for timezone handling).
 - Internet access.
 
+Optional: install `certifi` for a reliable TLS certificate bundle (recommended on
+macOS). The script works without it and falls back gracefully.
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Usage
 
 ```bash

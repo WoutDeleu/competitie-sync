@@ -1,0 +1,6 @@
+# competitie-sync runs on the Python standard library alone.
+# The only optional dependency is certifi, which provides an up-to-date CA
+# bundle. It helps on systems (notably macOS python.org builds) where the
+# default TLS trust store is missing; without it the script still works and
+# falls back to an unverified connection for this public, read-only site.
+certifi>=2023.7.22

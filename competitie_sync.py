@@ -427,10 +427,12 @@ def choose(items, label, render):
         print("  Invalid choice, try again.")
 
 
-def main():
-    print("competitie-sync — toernooi.nl team calendar exporter\n")
-    session = Session()
+def select_team_matches(session):
+    """Run the interactive sport -> league -> club -> team flow.
 
+    Returns (team_name, team_matches, league). Exits the process on
+    unrecoverable conditions (no draw, no matches).
+    """
     # 1. Sport
     print("Sports:")
     sport = choose(SPORTS, "sport", lambda s: s[0])
@@ -486,6 +488,15 @@ def main():
     if not team_matches:
         print(f"No matches found for {team_name}.")
         sys.exit(1)
+
+    return team_name, team_matches, league
+
+
+def main():
+    print("competitie-sync — toernooi.nl team calendar exporter\n")
+    session = Session()
+
+    team_name, team_matches, league = select_team_matches(session)
 
     ics, skipped = build_ics(team_matches, team_name, league.id)
     filename = f"{slugify(team_name)}.ics"

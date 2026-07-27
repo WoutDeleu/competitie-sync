@@ -4,3 +4,6 @@
 # default TLS trust store is missing; without it the script still works and
 # falls back to an unverified connection for this public, read-only site.
 certifi>=2023.7.22
+
+# Required only by competitie_excel.py to write the .xlsx availability sheet.
+openpyxl>=3.0

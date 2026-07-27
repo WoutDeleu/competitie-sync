@@ -31,6 +31,24 @@ You'll be prompted step by step:
 
 The script writes `<team-name>.ics` in the current directory, e.g. `herne-1h-19.ics`.
 
+## Excel availability sheet
+
+`competitie_excel.py` uses the **same interactive flow** but writes a
+"wie wanneer competitie" planning grid as `.xlsx` instead of an `.ics`:
+
+```bash
+pip install -r requirements.txt   # installs openpyxl
+python3 competitie_excel.py
+```
+
+It produces `<team-name>-wiewanneercomp.xlsx` with:
+
+- One **column per match** headed `weekday dd/mm/yyyy HH:MM vs Opponent`
+  (Dutch weekday; time omitted when unknown).
+- A **Locatie** row (`thuis`/`uit`) derived from home/away.
+- An **Eten** row and **basis**/**reserve** player blocks to fill in by hand.
+- A small legend: `x` = kan meedoen, `?` = nog niet zeker, blank = kan niet meedoen.
+
 ## Import into Google Calendar
 
 1. Open [Google Calendar](https://calendar.google.com) → gear icon → **Settings**.
